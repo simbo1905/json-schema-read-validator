@@ -21,16 +21,22 @@
     </repositories>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.confluent/kafka-schema-registry-client -->
+
         <dependency>
             <groupId>io.confluent</groupId>
             <artifactId>kafka-schema-registry-client</artifactId>
             <version>7.3.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.confluent/kafka-json-schema-provider -->
+
         <dependency>
             <groupId>io.confluent</groupId>
             <artifactId>kafka-json-schema-provider</artifactId>
+            <version>7.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-protobuf-provider</artifactId>
             <version>7.3.1</version>
         </dependency>
 
@@ -44,6 +50,12 @@
             <artifactId>log4j-api</artifactId>
             <version>2.7</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -80,7 +92,6 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                        <minimizeJar>true</minimizeJar>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.github.simbo1905.ValidateMain</mainClass>

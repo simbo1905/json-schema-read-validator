@@ -15,7 +15,7 @@ public class ValidatorTests {
     @DisplayName("Same rich schema")
     @Test
     void testSame1() {
-        Validator v = new Validator();
+        Validator v = new Validator(SchemaType.JSON);
         Schema s = ObjectSchema.builder()
                 .addPropertySchema("boolF", BooleanSchema.builder().build())
                 .addRequiredProperty("boolF")
@@ -58,14 +58,14 @@ public class ValidatorTests {
     @DisplayName("Reader does not require.")
     @Test
     void testDifferent1() {
-        Validator v = new Validator();
+        Validator v = new Validator(SchemaType.JSON);
         assertThat(v.validate(new JsonSchema(abNoAdditionalNoRequired), new JsonSchema(cdAdditionalRequiredC))).isNotEmpty();
     }
 
     @DisplayName("Reader requires writer does not provide.")
     @Test
     void testDifferent2() {
-        Validator v = new Validator();
+        Validator v = new Validator(SchemaType.JSON);
         final var r = v.validate(new JsonSchema(cdAdditionalRequiredC), new JsonSchema(abNoAdditionalNoRequired));
         assertThat(r).isNotEmpty();
     }
@@ -73,7 +73,7 @@ public class ValidatorTests {
     @DisplayName("Reader requires writer requires same no additional properties.")
     @Test
     void testSame2() {
-        Validator v = new Validator();
+        Validator v = new Validator(SchemaType.JSON);
         final var results = v.validate(new JsonSchema(cdAdditionalRequiredC), new JsonSchema(cdAdditionalRequiredC));
         assertThat(results).isEmpty();
     }

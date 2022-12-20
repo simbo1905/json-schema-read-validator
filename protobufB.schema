@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package com.codingharbour.protobuf;
+
+message SimpleMessage {
+	string content2 = 1;
+}

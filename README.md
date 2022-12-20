@@ -9,6 +9,11 @@ See [this SO question](https://stackoverflow.com/q/74798503/329496) for a discus
 ## Usage
 
 ```shell
-# This fails as missing required fields
-java com.github.simbo1905.ValidateMain -r schemaB.json -w schemaA.json
+mvn package
+# This finds issues with json
+java -jar ./target/json-schema-read-validator-1.0-SNAPSHOT.jar -t json -r json_schemaB.json -w json_schemaA.json
+# This finds issues with avro
+java -jar ./target/json-schema-read-validator-1.0-SNAPSHOT.jar -t avro -r avro_schemaB.json -w avro_schemaA.json
 ```
+
+In theory protobuf schema is available but not heavily test. 
